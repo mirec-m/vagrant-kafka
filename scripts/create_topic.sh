@@ -1,8 +1,7 @@
 #!/bin/bash
 
 if [ $# -gt 0 ]; then
-    $HOME/kafka_2.10-0.9.0.1/bin/kafka-topics.sh --zookeeper 10.30.3.2:2181 --replication-factor 3 --partition 1 --topic $1 --create
+    $HOME/kafka/bin/kafka-topics.sh --replication-factor 2 --partitions 1 --topic $1 --create --zookeeper zookeeper-1:2181,zookeeper-2:2181,zookeeper-3:2182
 else
     echo "Usage: "$(basename $0)" <topic_name>"
 fi
-
