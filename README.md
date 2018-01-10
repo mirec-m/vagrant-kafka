@@ -21,6 +21,7 @@ Pre-requisites
 -------------------------
 
 * Vagrant (tested on 2.0.1)
+* cwRsync (tested on 5.5.0)
 * Hyperv
 
 Setup
