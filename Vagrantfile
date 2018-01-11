@@ -17,8 +17,7 @@ Vagrant.configure("2") do |config|
 
   # common provisioning for all 
   config.vm.provision "shell", path: "scripts/init.sh"
-  
- 
+
   # configure zookeeper cluster
   (1..3).each do |i|
     config.vm.define "zookeeper-#{i}" do |s|
@@ -34,7 +33,7 @@ Vagrant.configure("2") do |config|
 
       s.vm.network "private_network", type: "dhcp"
       s.vm.provision "shell", path: "scripts/set-hostname.sh", args:"zookeeper-#{i}"
-      s.vm.provision "shell", path: "scripts/zookeeper.sh", args:"#{i}", privileged: false
+      s.vm.provision "shell", path: "scripts/zookeeper.sh", args:"#{i}", privileged: false, run: "always"
     end
   end
 
@@ -53,9 +52,8 @@ Vagrant.configure("2") do |config|
 
       s.vm.network "private_network", type: "dhcp"
       s.vm.provision "shell", path: "scripts/set-hostname.sh", args:"broker-#{i}"
-      s.vm.provision "shell", path: "scripts/broker.sh", args:"#{i}", privileged: false
+      s.vm.provision "shell", path: "scripts/broker.sh", args:"#{i}", privileged: false, run: "always"
     end
   end
-
 
 end

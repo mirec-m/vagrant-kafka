@@ -190,7 +190,7 @@ procs -----------memory---------- ---swap-- -----io---- --system-- -----cpu-----
 Redirecing this output to Kafka creates a basic form of a streaming producer.
 
 ```bash
-vmstat -a 1 -n 100 | ./kafka_2.10-0.9.0.1/bin/kafka-console-producer.sh \
+vmstat -a 1 -n 100 | ./kafka/bin/kafka-console-producer.sh \
    --topic test-one --broker-list broker-1:9092,broker-2:9092,broker-3:9092 &
 ```
 
